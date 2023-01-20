@@ -11,12 +11,12 @@ function App() {
     }),
     shallow
   );
-  const { increment, getPosts, posts } = useCounterStore();
+  const { increment, getPosts, posts, clearStore } = useCounterStore();
 
   useEffect(() => {
     getPosts();
   }, []);
-  
+
   return (
     <div>
       <h1>
@@ -29,6 +29,7 @@ function App() {
       >
         Increment by 10
       </button>
+      <button onClick={() => clearStore()}>clear</button>
       <hr />
       {JSON.stringify(posts)}
     </div>
