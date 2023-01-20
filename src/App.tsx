@@ -9,12 +9,20 @@ function App() {
     }),
     shallow
   );
+  const { increment } = useCounterStore();
 
   return (
     <div>
       <h1>
         {title}: {counte}
       </h1>
+      <button
+        onClick={() => {
+          increment(10);
+        }}
+      >
+        Increment by 10
+      </button>
     </div>
   );
 }
