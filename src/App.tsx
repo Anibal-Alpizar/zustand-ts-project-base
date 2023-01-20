@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useCounterStore } from "./store/counterStore";
 import shallow from "zustand/shallow";
 
@@ -6,11 +7,16 @@ function App() {
     (state) => ({
       counte: state.count,
       title: state.title,
+      posts: state.posts,
     }),
     shallow
   );
-  const { increment } = useCounterStore();
+  const { increment, getPosts, posts } = useCounterStore();
 
+  useEffect(() => {
+    getPosts();
+  }, []);
+  
   return (
     <div>
       <h1>
@@ -23,6 +29,8 @@ function App() {
       >
         Increment by 10
       </button>
+      <hr />
+      {JSON.stringify(posts)}
     </div>
   );
 }
